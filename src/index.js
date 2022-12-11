@@ -16,6 +16,7 @@ function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
     yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
+    yield takeEvery('FETCH_MOVIE_GENRES', fetchMovieGenres);
     
 }
 
@@ -45,16 +46,26 @@ function* fetchAllGenres() {
         
 }
 
-// Get details of the movie, including genres
+// Get details of the movie
 function* fetchMovieDetails(action) {
     //console.log('action is', action.payload.currentMovieID);
     try {
         const movieDetails = yield axios.get('/api/movie/' + action.payload.currentMovieID)
-        const movieGenres = yield axios.get('/api/genre/' + action.payload.currentMovieID)
+        //const movieGenres = yield axios.get('/api/genre/' + action.payload.currentMovieID)
         yield put({type: 'SET_MOVIE_DETAILS', payload: movieDetails.data})
-        yield put({type: 'SET_MOVIE_GENRES', payload: movieGenres.data})
+        //yield put({type: 'SET_MOVIE_GENRES', payload: movieGenres.data})
     } catch {
         console.log('get specific movie error')
+    }
+}
+
+// Get genres of specific movie
+function* fetchMovieGenres(action) {
+    try {
+        const movieGenres = yield axios.get('/api/genre/' + action.payload.currentMovieID)
+        yield put({type: 'SET_MOVIE_GENRES', payload: movieGenres.data})
+    } catch {
+        console.log('get specific movie genres error')
     }
 }
 

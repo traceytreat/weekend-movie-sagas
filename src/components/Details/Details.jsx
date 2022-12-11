@@ -12,18 +12,20 @@ function Details(){
 
     console.log('currentMovieID equals', currentMovieID);
     console.log('current movie details equals', movieDetails);
+    console.log('current movie details equals', movieGenres);
     useEffect(() => {
         dispatch({ 
             type: 'FETCH_MOVIE_DETAILS', 
-            payload: {currentMovieID} });
+            payload: {currentMovieID} }
+        );
+        dispatch({ 
+            type: 'FETCH_MOVIE_GENRES', 
+            payload: {currentMovieID} }
+        );
+            
     }, []);
 
     return(
-        <section id="movie-details">
-            <h3>{movieDetails.title}</h3>
-            <div>
-                <img src={movieDetails.poster} />
-            </div>
             <div>
                 Genres:
                 <ul>
@@ -31,9 +33,8 @@ function Details(){
                         <li key={genre.name}>{genre.name}</li>
                     ))}
                 </ul>
-                <p>{movieDetails.description}</p>
             </div>
-        </section>
+    
     );
 }
 
