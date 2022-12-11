@@ -7,8 +7,11 @@ function Details(){
     const history = useHistory();
 
     const currentMovieID = useSelector(store => store.currentMovie.id);
-    console.log('currentMovieID equals', currentMovieID);
+    const movieDetails = useSelector(store => store.movieDetails);
+    const movieGenres = useSelector(store => store.movieGenres);
 
+    console.log('currentMovieID equals', currentMovieID);
+    console.log('current movie details equals', movieDetails[0]);
     useEffect(() => {
         dispatch({ 
             type: 'FETCH_MOVIE_DETAILS', 
@@ -16,9 +19,21 @@ function Details(){
     }, []);
 
     return(
-        <>
-        test
-        </>
+        <section id="movie-details">
+            <h3>{movieDetails[0].title}</h3>
+            <div>
+                <img src={movieDetails[0].poster} />
+            </div>
+            <div>
+                Genres:
+                <ul>
+                    {movieGenres.map(genre => (
+                        <li key={genre.name}>{genre.name}</li>
+                    ))}
+                </ul>
+                <p>{movieDetails[0].description}</p>
+            </div>
+        </section>
     );
 }
 
