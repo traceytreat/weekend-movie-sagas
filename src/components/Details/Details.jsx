@@ -46,6 +46,7 @@ function Details() {
             </ul>
             <h4>Description:</h4>
             <p>{movies.description}</p>
+            <button onClick={() => {history.push('/')}}>Return to List</button>
             </div>
         </section>
     );
