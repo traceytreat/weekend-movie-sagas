@@ -15,7 +15,7 @@ import axios from 'axios';
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
     yield takeEvery('FETCH_GENRES', fetchAllGenres);
-    yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
+    //yield takeEvery('FETCH_MOVIE_DETAILS', fetchMovieDetails);
     yield takeEvery('FETCH_MOVIE_GENRES', fetchMovieGenres);
     
 }
@@ -47,6 +47,7 @@ function* fetchAllGenres() {
 }
 
 // Get details of the movie
+/*
 function* fetchMovieDetails(action) {
     //console.log('action is', action.payload.currentMovieID);
     try {
@@ -58,6 +59,7 @@ function* fetchMovieDetails(action) {
         console.log('get specific movie error')
     }
 }
+*/
 
 // Get genres of specific movie
 function* fetchMovieGenres(action) {
@@ -104,6 +106,7 @@ const moviesGenres = (state = [], action) => {
 }
 */
 // store movie details
+/*
 const movieDetails = (state = [], action) => {
     switch (action.type) {
         case 'SET_MOVIE_DETAILS':
@@ -112,6 +115,7 @@ const movieDetails = (state = [], action) => {
             return state;
     }
 }
+*/
 
 // store genres of movie
 const movieGenres = (state = [], action) => {
@@ -138,7 +142,6 @@ const storeInstance = createStore(
     combineReducers({
         movies,
         genres,
-        movieDetails,
         movieGenres,
         currentMovie,
     }),
