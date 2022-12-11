@@ -9,6 +9,10 @@
     margin: 20px;
 }
 
+#poster img {
+    width: 200px;
+}
+
 #info {
     flex-direction: column;
     text-align: left;
