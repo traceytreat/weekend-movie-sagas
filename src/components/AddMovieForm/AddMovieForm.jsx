@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 function AddMovieForm() {
     const dispatch = useDispatch();
+    const history = useHistory();
 
     let [movieTitle, setMovieTitle] = useState('');
     let [moviePoster, setMoviePoster] = useState('');
     let [movieDescription, setMovieDescription] = useState('');
-    let [movieGenre, setMovieGenre] = useState(0);
+    let [movieGenre, setMovieGenre] = useState('0');
 
     const handleSubmit = () => {
         dispatch({
@@ -17,9 +19,11 @@ function AddMovieForm() {
                 title: movieTitle,
                 poster: moviePoster,
                 description: movieDescription,
-                genre_id: movieGenre
+                genre_id: Number(movieGenre)
             }
         })
+        // return to main page
+        history.push('/');
     }
 
     return (
@@ -45,8 +49,8 @@ function AddMovieForm() {
                     onChange={(event) => setMovieDescription(event.target.value)}
                 />
                 <select
-                    value="default"
-                    onChange={(event) => setMovieGenre(Number(event.target.value))}
+                    value={movieGenre}
+                    onChange={(event) => setMovieGenre(event.target.value)}
                 >
                     <option value="0" disabled hidden>Choose genre</option>
                     <option value="1">Adventure</option>
