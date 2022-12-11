@@ -1,20 +1,19 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import './MovieList.css'
 
 function MovieList() {
 
     const dispatch = useDispatch();
+    const history = useHistory();
     const movies = useSelector(store => store.movies);
-    const genres = useSelector(store => store.genres);
-    const moviesGenres = useSelector(store => store.moviesGenres);
-    console.log(genres);
-    console.log('moviesGenres array', moviesGenres);
+    //const moviesGenres = useSelector(store => store.moviesGenres);
+    //console.log('moviesGenres array', moviesGenres);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
-        dispatch({ type: 'FETCH_GENRES' });
-        dispatch({ type: 'FETCH_MOVIES_GENRES' });
+        //dispatch({ type: 'FETCH_MOVIES_GENRES' });
     }, []);
 
     return (
@@ -22,11 +21,21 @@ function MovieList() {
             <h1>MovieList</h1>
             <section className="movies">
                 {movies.map(movie => {
-                    {console.log(movie)}
                     return (
                         <div key={movie.id} >
                             <h3>{movie.title}</h3>
-                            <img src={movie.poster} alt={movie.title}/>
+                            <img
+                                onClick={() => {
+                                    dispatch({
+                                        type: 'SET_CURRENT_MOVIE',
+                                        payload: {id: movie.id}
+                                    });
+                                    history.push('/details');
+                                }
+                                }
+                                src={movie.poster}
+                                alt={movie.title} 
+                            />
                         </div>
                     );
                 })}
