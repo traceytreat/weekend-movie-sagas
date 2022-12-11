@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
 
 
 //get a specific movie
+/*
 router.get('/:id', (req, res) => {
   const query = `SELECT * FROM movies WHERE id = $1`;
   pool.query(query, [req.params.id])
@@ -30,6 +31,7 @@ router.get('/:id', (req, res) => {
     })
 
 });
+*/
 
 router.post('/', (req, res) => {
   console.log(req.body);
