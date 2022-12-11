@@ -1,5 +1,19 @@
 .movies {
     display : flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    margin: 20px;
+
+}
+
+#movie {
+    width: 300px;
+}
+
+#movie img {
+    opacity: 100%;
+}
+
+#movie img:hover {
+    opacity: 80%;
 }
