@@ -31,24 +31,32 @@ function AddMovieForm() {
 
             <h3>Add a Movie</h3>
             <form onSubmit={handleSubmit}>
+                <label for="movieTitle">Name:</label>
                 <input
+                    id="movieTitle"
                     type="text"
                     placeholder="Movie name"
                     value={movieTitle}
                     onChange={(event) => setMovieTitle(event.target.value)}
                 />
+                <label for="moviePoster">URL:</label>
                 <input
+                    id="moviePoster"
                     type="text"
                     placeholder="Poster URL"
                     value={moviePoster}
                     onChange={(event) => setMoviePoster(event.target.value)}
                 />
+                <label for="movieDescription">Description:</label>
                 <textarea
+                    id="movieDescription"
                     placeholder="Movie description"
                     value={movieDescription}
                     onChange={(event) => setMovieDescription(event.target.value)}
                 />
+                <label for="movieGenre">Genre:</label>
                 <select
+                    id="movieGenre"
                     value={movieGenre}
                     onChange={(event) => setMovieGenre(event.target.value)}
                 >
