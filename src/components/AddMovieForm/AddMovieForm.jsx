@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import './AddMovieForm.css';
 
 function AddMovieForm() {
     const dispatch = useDispatch();
@@ -31,30 +32,30 @@ function AddMovieForm() {
 
             <h3>Add a Movie</h3>
             <form onSubmit={handleSubmit}>
-                <label for="movieTitle">Name:</label>
+                <label htmlFor="movieTitle">Name:</label>
                 <input
                     id="movieTitle"
                     type="text"
                     placeholder="Movie name"
                     value={movieTitle}
                     onChange={(event) => setMovieTitle(event.target.value)}
-                />
-                <label for="moviePoster">URL:</label>
+                /><br />
+                <label htmlFor="moviePoster">URL:</label>
                 <input
                     id="moviePoster"
                     type="text"
                     placeholder="Poster URL"
                     value={moviePoster}
                     onChange={(event) => setMoviePoster(event.target.value)}
-                />
-                <label for="movieDescription">Description:</label>
+                /><br />
+                <label htmlFor="movieDescription">Description:</label>
                 <textarea
                     id="movieDescription"
                     placeholder="Movie description"
                     value={movieDescription}
                     onChange={(event) => setMovieDescription(event.target.value)}
-                />
-                <label for="movieGenre">Genre:</label>
+                /><br />
+                <label htmlFor="movieGenre">Genre:</label>
                 <select
                     id="movieGenre"
                     value={movieGenre}
@@ -75,7 +76,7 @@ function AddMovieForm() {
                     <option value="12">Space Opera</option>
                     <option value="13">Superhero</option>
 
-                </select>
+                </select><br />
                 <input
                     type="submit"
                     value="Add Movie"

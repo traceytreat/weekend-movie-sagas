@@ -1,0 +1,9 @@
+#add-movie-form {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+input, textarea, select {
+    width: 200px;
+    margin: 20px;
+}
