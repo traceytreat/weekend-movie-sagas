@@ -8,21 +8,14 @@ function Details() {
     const history = useHistory();
 
     const currentMovieID = useSelector(store => store.currentMovie.id);
+    //get the specific movie
     const movies = useSelector(store => store.movies[currentMovieID - 1]);
-    //const movieDetails = useSelector(store => store.movieDetails);
+    //get the genres for this specific movie
     const movieGenres = useSelector(store => store.movieGenres);
 
-    console.log('currentMovieID equals', currentMovieID);
-    console.log('current movie details equals', movies);
+
     useEffect(() => {
         dispatch({ type: 'FETCH_MOVIES' });
-
-        /*
-        dispatch({ 
-            type: 'FETCH_MOVIE_DETAILS', 
-            payload: {currentMovieID} }
-        );
-        */
 
         dispatch({
             type: 'FETCH_MOVIE_GENRES',
@@ -32,6 +25,7 @@ function Details() {
 
     }, []);
 
+    // display movie details on the dom
     return (
         <section id="movie-details">
             <div id="poster">
